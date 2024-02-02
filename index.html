@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  <title>
+    Math Quiz
+  </title>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAcEXhu_eFZj-zE89uyTXlGUrW2P3eOVFs",
+      authDomain: "quiz-4fb68.firebaseapp.com",
+      databaseURL: "https://quiz-4fb68-default-rtdb.firebaseio.com",
+      projectId: "quiz-4fb68",
+      storageBucket: "quiz-4fb68.appspot.com",
+      messagingSenderId: "501469472357",
+      appId: "1:501469472357:web:b41e8f79a188e7ee4b888c"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script>
+    function display() {
+      var score = 0
+      var name = document.getElementById("fname").value
+      if (document.getElementById("q1_c3").checked) {
+        score = score + 1
+      }
+      if (document.getElementById("q2_c1").checked) {
+        score = score + 1
+      }
+      if (document.getElementById("q3_c2").checked) {
+        score = score + 1
+      }
+      if (document.getElementById("q4_c2").checked) {
+        score = score + 1
+      }
+      enterDB(name,score)
+      //alert("Your score is : "+score)
+      if (score === 4) {
+        alert("our utmost respect to you most parents cannot achieve what you have kudos, " + name + " You have scored full points"+"I will display &#129299")
+      } else if (score === 3) {
+        alert("Good try " + name + " You have scored 3 points")
+      
+      } else if (score === 2) {
+        alert("JUST PASS living on the edge huh? " + name + " You have scored 2 points")
+      } else if (score === 1) {
+        alert("were you lisenting ?, " + name + " You have scored 1 point")
+      } else if (score === 0) {
+        alert("U are like us now, " + name + " You have scored 0 points")
+      }
+      
+    }
+    function enterDB(name, score){
+      var database = firebase.database();
+      console.log(database)
+
+      var dbRef = database.ref("/");
+      dbRef.set({
+        name:score
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <h1> Quiz</h1>\
+  <h2>&#128513;</h2>
+  <form action="#" onsubmit="display()">
+    <h1>Kindly enter your Name</h1>
+    <input type="text" id="fname" value="sidanth">
+
+    <h1>1.Complete the phrase.The angle in a semi circle are .... degrees</h1>
+      <input type="radio" id="q1_c1" name="q1" value="30">
+      <label for="html">30</label><br>
+      <input type="radio" id="q1_c2" name="q1" value="50">
+      <label for="css">50</label><br>
+      <input type="radio" id="q1_c3" name="q1" value="90">
+      <label for="javascript">90</label><br><br>
+
+
+
+
+    <h1>2.Calculate the angle at the centre if the circumference angle is  20:</h1>
+    <input type="radio" id="q2_c1" name="q2" value="40">
+    <label for="answer1">40</label><br>
+    <input type="radio" id="q2_c2" name="q2" value="20">
+    <label for="answer2">20</label><br>
+    <input type="radio" id="q2_c3" name="q2" value="10">
+    <label for="answer3">10</label><br><br>
+
+
+
+    <h1>3.The angle that lies between a tangent and a chord is not equal to the angle subtended by the same chord in the alternate segment.</h1>
+    <input type="radio" id="q3_c1" name="q3" value="TRUE!!!">
+    <label for="answer1">TRUE!!!</label><br>
+    <input type="radio" id="q3_c2" name="q3" value="FALSE!!">
+    <label for="answer2">FALSE!!</label><br>
+    <input type="radio" id="q3_c3" name="q3" value="IDK">
+    <label for="answer3">IDK</label><br><br>
+
+
+    <h1>4.Did you enjoy?????</h1>
+    <input type="radio" id="q4_c1" name="q4" value="Maybe">
+  
+    <label for="answer1">Maybe</label><br>
+    <input type="radio" id="q4_c2" name="q4" value="Yes">
+    <label for="answer2">Yes</label><br>
+    <input type="radio" id="q4_c3" name="q3" value="No">
+    <label for="answer3">No</label><br><br>
+
+
+    <h1>Feedback</h1>
+    <input type="text" id="feedback" value="">
+    <br><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+
+
+
+
+</body>
+
+</html>
